@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Web3 from 'web3'
 import logo from '../logo.gif';
 import './App.css';
+import Marketplace from '../abis/Marketplace.json'
 
 class App extends Component {
 
@@ -27,7 +28,26 @@ class App extends Component {
     const web3 = window.web3
     //Load accounts
     const accounts = await web3.eth.getAccounts()
-    console.log(accounts) 
+    this.setState({account: accounts[0]})
+    const networkId = await web3.eth.net.getId()
+    const networkData = Marketplace.networks= Marketplace.networks[networkId]
+    if (networkData) {
+      const marketplace = web3.eth.Contract(Marketplace.abi, networkData.address)
+    } else {
+      window.alert("Markeplace contract isn't deployed to detected network.")
+
+    }
+    
+  }
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      account: '',
+      productCont: 0,
+      products: [],
+      loading: true
+    }
   }
 
   render() {
@@ -42,6 +62,11 @@ class App extends Component {
           >
             Nakamoto List
           </a>
+          <ul className="navbar-nav px-3">
+          <li className="nav-item text-nowrap d-none d-sm-none d-sm-block">
+            <small className="text-white"><span id="account">Account: {this.state.account}</span></small>
+          </li>
+        </ul>
         </nav>
         <div className="container-fluid mt-5">
           <div className="row">
