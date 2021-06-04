@@ -3,6 +3,7 @@ import Web3 from 'web3'
 import logo from '../logo.gif';
 import './App.css';
 import Marketplace from '../abis/Marketplace.json'
+import Navbar from'./Navbar'
 
 class App extends Component {
 
@@ -34,10 +35,8 @@ class App extends Component {
     if (networkData) {
       const marketplace = web3.eth.Contract(Marketplace.abi, networkData.address)
     } else {
-      window.alert("Markeplace contract isn't deployed to detected network.")
-
+      window.alert("Markeplace contract isn't deployed to detected")
     }
-    
   }
 
   constructor(props) {
@@ -53,21 +52,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <nav className="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-          <a
-            className="navbar-brand col-sm-3 col-md-2 mr-0"
-            href="Nakamoto List"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Nakamoto List
-          </a>
-          <ul className="navbar-nav px-3">
-          <li className="nav-item text-nowrap d-none d-sm-none d-sm-block">
-            <small className="text-white"><span id="account">Account: {this.state.account}</span></small>
-          </li>
-        </ul>
-        </nav>
+        <Navbar account={this.state.account}/>
         <div className="container-fluid mt-5">
           <div className="row">
             <main role="main" className="col-lg-12 d-flex text-center">
