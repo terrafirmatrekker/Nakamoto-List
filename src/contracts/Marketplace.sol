@@ -35,7 +35,7 @@ contract Marketplace {
         name = "Nakamoto List";
     }
 
-    // Function to creat a product
+    // Function to create a product
     // _ underscores indicate local variables
     function addProduct(string memory _name, uint256 _price) public {
         // Require a valid name

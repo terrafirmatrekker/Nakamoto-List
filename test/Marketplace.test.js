@@ -85,7 +85,7 @@ contract('Marketplace', ([deployer, seller, buyer]) => { // pass in a function a
         let price
         price = web3.utils.toWei('1', 'Ether')
         price = new web3.utils.BN(price)
-  
+        
         const exepectedBalance = oldSellerBalance.add(price)
   
         assert.equal(newSellerBalance.toString(), exepectedBalance.toString())
