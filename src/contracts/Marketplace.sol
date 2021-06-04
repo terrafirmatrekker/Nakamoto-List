@@ -15,7 +15,7 @@ contract Marketplace {
         bool purchased;
     }
 
-    event ProductAdded(
+    event ProductCreated(
         uint256 id,
         string name,
         uint256 price,
@@ -37,7 +37,7 @@ contract Marketplace {
 
     // Function to create a product
     // _ underscores indicate local variables
-    function addProduct(string memory _name, uint256 _price) public {
+    function createProduct(string memory _name, uint256 _price) public {
         // Require a valid name
         require(bytes(_name).length > 0);
         // Require a valid price
@@ -53,7 +53,7 @@ contract Marketplace {
             false
         );
         // Trigger an event
-        emit ProductAdded(productCount, _name, _price, msg.sender, false);
+        emit ProductCreated(productCount, _name, _price, msg.sender, false);
     }
 
     function buyProduct(uint256 _id) public payable {
