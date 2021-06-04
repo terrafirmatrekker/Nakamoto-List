@@ -29,7 +29,7 @@ class App extends Component {
                 </a>
                 <h1>Nakamoto List</h1>
                 <p>
-                  Edit <code>src/components/App.js</code> and save to reload.
+                  Welcome to Web3's Marketplace!
                 </p>
                 <a
                   className="App-link"
