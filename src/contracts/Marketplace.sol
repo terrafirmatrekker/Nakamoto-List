@@ -5,7 +5,7 @@ contract Marketplace {
     string public name; // State variable permanently stored in contract storage https://bit.ly/3pgZn6h
     uint256 public productCount = 0;
     mapping(uint256 => Product) public products; // think of mapping as key-to-value storage, e.g. Dicts, Maps
-
+    // We can't interate over mapping or use .length, etc, etc..
     struct Product {
         // We can treat a struct like a value type such that they can be used within arrays and mappings.
         uint256 id; // List the struct members, which consists of variables names along with their types
@@ -56,7 +56,7 @@ contract Marketplace {
         emit ProductCreated(productCount, _name, _price, msg.sender, false);
     }
 
-    function buyProduct(uint256 _id) public payable {
+    function purchaseProduct(uint256 _id) public payable {
         /*Fetch product (memory keyword: https://bit.ly/3g6fHTn)
         memory cannot be used at the contract level, only in methods.*/
         Product memory _product = products[_id];

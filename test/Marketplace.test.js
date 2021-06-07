@@ -31,7 +31,7 @@ contract('Marketplace', ([deployer, seller, buyer]) => { // pass in a function a
   
       before(async () => {
         // Web3.utils.toWei avoids representing Wei as 1e18 
-        result = await mkt.addProduct('Nintendo Switch', web3.utils.toWei('1', 'Ether'), { from: seller })
+        result = await mkt.createProduct('Nintendo Switch', web3.utils.toWei('1', 'Ether'), { from: seller })
         productCount = await mkt.productCount() // fetch count
       })
   
@@ -46,9 +46,9 @@ contract('Marketplace', ([deployer, seller, buyer]) => { // pass in a function a
         assert.equal(event.purchased, false, 'purchased is correct')
   
         // FAILURE: Product must have a name
-        await await mkt.addProduct('', web3.utils.toWei('1', 'Ether'), { from: seller }).should.be.rejected;
+        await await mkt.createProduct('', web3.utils.toWei('1', 'Ether'), { from: seller }).should.be.rejected;
         // FAILURE: Product must have a price
-        await await mkt.addProduct('Nintendo Switch', 0, { from: seller }).should.be.rejected;
+        await await mkt.createProduct('Nintendo Switch', 0, { from: seller }).should.be.rejected;
       })
       
       it('lists products', async () => {
