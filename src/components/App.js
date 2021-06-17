@@ -6,6 +6,15 @@ import Marketplace from "../abis/Marketplace.json";
 import Navbar from "./Navbar";
 import Main from "./Main";
 
+// class dapp extends React.Component {
+//   render() {
+//     return  (
+//       <div className="bridge">test
+//       <Renapp /></div>
+//     )
+//   }
+// }
+
 class App extends Component {
   async componentWillMount() {
     await this.loadWeb3();
@@ -88,9 +97,9 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <div className="App">
         <Navbar account={this.state.account} />
-        <div className="container-fluid mt-5">
+        <div className="container mt-5"> 
           <div className="row">
             <main role="main" className="col-lg-12 d-flex">
               {this.state.loading ? (
@@ -109,7 +118,7 @@ class App extends Component {
         </div>
       </div>
     );
+    }
   }
-}
 
 export default App;
